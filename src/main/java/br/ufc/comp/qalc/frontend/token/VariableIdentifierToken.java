@@ -23,6 +23,17 @@ public class VariableIdentifierToken extends Token {
         }
     }
 
+    /**
+     * Obtém o identificador associado ao token.
+     *
+     * @return Identificador de variável associado.
+     */
+    public String getVariableIdentifier() {
+        interpretAttributes();
+
+        return stringValue;
+    }
+
     @Override
     public String getTokenIdentifier() {
         return "VARID";
