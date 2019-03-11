@@ -49,13 +49,20 @@ public class Scanner {
         } else if (Character.isDigit(source.getCurrentChar())) { // NumberToken
             StringBuilder lexema = new StringBuilder();
 
+
+            int ponto = 0;
             long currentLine = source.getCurrentLine();
             long lexemeStart = source.getCurrentColumn();
 
             do {
-                lexema.append(source.getCurrentChar());
-                source.advance();
-            } while (Character.isDigit(source.getCurrentChar()));
+                if(source.getCurrentChar() == ('.')) {
+                    ponto = ponto + 1;
+                }
+                if(ponto <= 1) {
+                    lexema.append(source.getCurrentChar());
+                    source.advance();
+                }
+            } while ((Character.isDigit(source.getCurrentChar())) & (ponto <= 1));
 
             String stringValue = lexema.toString();
 
